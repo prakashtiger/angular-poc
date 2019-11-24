@@ -1,3 +1,18 @@
-<p>
-twitter-stream works!
-</p>
+<div class="main row">
+<div class="col-md-12 filter">
+    <div class="form-group">
+        <input #filter type="text" class="form-control" placeholder="Search Tweet" />
+    </div>
+</div>
+<div class="col-md-12 feed">  
+  <div
+    class="twitter-tweet"   *ngFor="let twitter of twitterStreamList$ | async | filterStream: filter.value">
+    <div class="row">
+        <div class="col-md-12">
+                <a target="_blank" [href]="twitter.message.user.url" >@{{twitter.message.user.screen_name}}</a>
+        </div>
+    </div>
+    <p>{{ twitter.message.text }}</p>
+  </div>
+</div>
+</div>
